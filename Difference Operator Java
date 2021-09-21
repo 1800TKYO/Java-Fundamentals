@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+   
+   //creation of new scanner object
+    Scanner keyboard = new Scanner(System.in);
+    
+     //declare int variables for user input
+    int num1, num2;
+
+    //prompt user for first number
+    System.out.println("Please enter in number 1"); 
+
+    /* read user input into num1 */
+     num1= keyboard.nextInt();
+     
+     //print out the User's first input right after
+     System.out.println("num1 is "+num1);
+
+
+    System.out.println("Please enter in number 2 ");
+    
+    //read user input into num2
+    num2=keyboard.nextInt();
+    
+    //print out the user's second input right after 
+     System.out.println("num2 is "+num2);
+
+    //declare variable for the difference of two numbers and assign to difference of num1+num2
+    int diffrence= num1+num2;
+    System.out.println("The Diffrence is "+diffrence);
