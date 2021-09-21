@@ -1,0 +1,18 @@
+//Read Decimal Numbers from the Keyboard in Java
+
+
+import java.util.Scanner; //import Scanner module
+
+class Main {
+ public static void main(String args[]) {
+  Scanner keyboard = new Scanner(System.in);         //Initialising Scanner
+  double amount;                                     //creating a variable called amount(note amount does not = anything here), double is the data type        
+  System.out.print("What's the price of a CD-ROM? "); 
+  amount = keyboard.nextDouble();                    //handles user input and saves it using double variable created earlier called amount 
+  amount = amount + 25.00;                           // logical operation 
+  System.out.print("We will bill $");               //OUTPUT!
+  System.out.print(amount);
+  System.out.println(" to your credit card.");
+  keyboard.close();
+ }
+}
