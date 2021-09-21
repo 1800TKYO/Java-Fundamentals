@@ -28,5 +28,5 @@ class Main {
      System.out.println("num2 is "+num2);
 
     //declare variable for the difference of two numbers and assign to difference of num1+num2
-    int diffrence= num1+num2;
+    int diffrence= num1-num2;
     System.out.println("The Diffrence is "+diffrence);
