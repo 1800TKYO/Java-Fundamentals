@@ -1,0 +1,58 @@
+package ottweb.buildjavamethods;
+
+//AUTHOR Shalom Ogwuche 
+
+import java.util.Scanner;
+
+public class tuesday {  
+    public static void main(String[] args) {       
+        //Create empty String variables to hold the translated messages
+        String message = "",cryptoMessage = "",newMessage  = "";
+        
+        //Create new Scanner for input
+        Scanner keyboard = new Scanner(System.in); 
+        
+        System.out.println("Enter a message. ");
+        
+        message = keyboard.nextLine();
+        
+        //For each character in the input STRING, Apply rot13 algorithm and append that chracter to a new message
+        for (int i=0; i<message.length(); i++)
+           cryptoMessage = cryptoMessage+rot13(message.charAt(i));
+           //output the cryptomeassge
+        System.out.println("Encrypted: " + cryptoMessage);
+        
+        //apply rot13 to again to the cryptomessage to get the original message back
+        for(int i=0; i<cryptoMessage.length(); i++)
+            newMessage = newMessage+rot13(cryptoMessage.charAt(i
+            
+            //output the decrypted messag(same as the original)
+        System.out.println("Decrypted: " + newMessage);        
+    } 
+    
+    //begin the rot13 function/method that converts a single character
+public static char rot13(char oneCharacter){
+    //define original alphabet
+    String fromAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
+    //define rot13 alphabet
+    String toAlphabet = "nopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklm";
+    
+    //assign the converted letter to newLetter
+    char newLetter;
+    
+    //First find the index of the character to convert in the from String
+    int newIndex = fromAlphabet.indexOf(oneCharacter);
+    
+    //Replace it with the corresponding character from the rot13 alphabet
+    if(newIndex != -1)
+        newLetter = toAlphabet.charAt(newIndex);
+    //otherwise Just make the new character the same as the old one
+    else
+        newLetter = oneCharacter;
+    
+    //return the result to the calling function
+    return newLetter;         
+}
+    
+}
