@@ -1,0 +1,185 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author shalom Ogwuche
+ */
+import java.util.Scanner;
+
+/**
+ *
+ * @author shalom ogwuche
+ * This program is intended to perform both String and Integer functions
+ * the program will use a menu to provide paths to each function. Once the program code is executed
+ * The main method is called which allows the user to input their name. The menu is then called, 
+ * from here the user can enter 1 to generate a username, enter 2 to calculate the factorial of a number, enter 3 to quit.
+ * if the user follows the paths in option 1 or 2. they are returned to the main menu, until the user quits.
+ * 
+ */
+public class DSI {
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args) 
+    {
+        
+        
+        Scanner mainKeyboard = new Scanner(System.in);      
+        System.out.println("Please enter a name");      //prompt user for input
+        
+        
+        String adminUser = mainKeyboard.next();         //read in value of input as adminUser 
+
+        System.out.println("Welcome!, " + adminUser);   //print welcome message with value of adminUser
+        
+        
+        menu(adminUser);                                //clal menu
+    }
+    
+    /**
+     * menu()
+     * Displays options to screen and displays a prompt for input
+     * which is stored in the variable choice, Repeats indefinitely until the user selects the quit option.
+     * Methods / Subroutines will be called depending on user input.
+     * @param adminUser
+     */
+    public static void menu(String adminUser){
+        
+        Scanner menuKeyboard = new Scanner(System.in);
+        
+        int choice = 0;
+        
+        do {
+            
+            System.out.println("**************************");           //Display menu options
+            System.out.println("Please select option 1, 2 or 3");
+            System.out.println("1 to generate username");
+            System.out.println("2 to calculate factorial");
+            System.out.println("3 to terminate the program");
+            System.out.println("**************************");           //end of display menu option
+            
+            choice = menuKeyboard.nextInt();
+            
+            switch(choice){                                             //cases =  choice 1 2 3 which the user enters
+                case 1:
+                    System.out.println("********************");
+                    System.out.println("welcome " + adminUser);         //Print welcome message
+                    System.out.println("This is option 1, Please follow the instructions");
+                    getFullname();                                      //caall getFullname method
+                    
+                    break;
+                case 2:
+                    System.out.println("********************");
+                    System.out.println("welcome " + adminUser);         //Print welcome message
+                    System.out.println("This is option 2, Please follow the instructions");
+                    factorialMethod();                                  //ccall facotrial method
+                    
+                    break;
+                case 3:
+                    System.out.println("Thank you, Goodbye");           //exit program
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid option Please enter 1, 2 or 3");
+            }
+            
+        } while (choice!=3); // quit option from menu
+            
+    }
+    
+    /**getFullname()
+     * When option 1 is selected, prompts for a full name to be entered, in the
+     * format of a first name and a last name and is stored in the 
+     * variable fullname.
+     * createUsername() is then called passing in the variable
+     * fullname as an argument.
+     *
+     * @return fullname
+     */
+    public static String getFullname(){
+
+        Scanner nameKeyboard = new Scanner(System.in);
+        
+        System.out.println("Please enter your first name");
+        String firstName = nameKeyboard.next();                         //read value of firstname
+        
+        System.out.println("Please enter your last name");
+        String lastName = nameKeyboard.next();                          //read value of last name
+        
+        String fullname = firstName + " " + lastName;                   //read value of fullname
+        createUsername(fullname);                                       //call createUsername method passing in the fullname variable as an argument
+        
+        return fullname;   
+    }
+    
+    /**createUsername()
+     * Carries out string manipulation of the argument passed 
+     * in this case the fullname variable from getFullname().
+     * It extracts the first character then extracts the text after
+     * the space and joins the two to create the username.
+     * @param fullname
+     * @return userName
+     */
+    public static String createUsername(String fullname)
+    {
+        String userName = "";                                           
+        
+        String[] stringParts = fullname.split(" ");                     //split the value of the fullname where a space is found
+        
+        String partB =stringParts[1];                                   //String variable Partb created to store the secondhalf of our username i.e the last name stored in stringparts
+
+        char pos = fullname.charAt(0);                                  //assign first character of fullname to variable pos         
+        
+            StringBuilder userNameList = new StringBuilder();           //create StringBuilder object to store our username 
+        
+            userNameList.append(pos);                                   //add first character of username
+        
+            userNameList.append(partB);                                 //add lastname to username
+      
+        System.out.println("Your Username is " + userNameList);         //print out username
+        
+        return userName;
+    
+    }
+    
+    /**factorialMethod()
+     * Prompts user to enter a number and checks that it is an 
+     * integer above the value of zero.
+     * Then calculates and outputs the factorial of the given
+     *
+     * @return factorial
+     */
+    public static int factorialMethod(){
+        
+        Scanner factorialKeyboard = new Scanner(System.in);
+        
+        System.out.println("Enter a number to calculate: ");             //prompt for user to input number to perform factorial operation on
+        
+        int number = factorialKeyboard.nextInt();                        //read user input and store in variable number
+        
+        int i = 1;
+        int factorial = 1;                                                      
+        
+        if (number > 0)                                                 //outer if loop, testing if number entered is > 0,
+        {                                                
+            
+           while(i<=number)                                             //start of inner loop & asssiging i to the value held in number                                                                                     
+        {
+            factorial = factorial * i;                                  //Factorial operation       
+            i++;                                                        //iterate back to while condition
+            
+        }                                                               //end inner loop
+        System.out.println("The factorial of your number is: "+ factorial);
+       }
+        else                                                            //end of outer if loop.
+        {
+            System.out.println("Please enter a positive whole number");
+        }
+        return factorial;
+            
+    }
+}
